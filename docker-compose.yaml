@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: auth-api
+    ports:
+      - "4010:4010"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - JWT_SECRET_REFRESH_KEY=${JWT_SECRET_REFRESH_KEY}
+      - HOST=${HOST}
+      - MONGO_URI=${MONGO_URI}
+      - MAIL_ACCOUNT=${MAIL_ACCOUNT}
+      - MAIL_APP_PASSWORD=${MAIL_APP_PASSWORD}
+      - VERIFY_RETURN_URL=${VERIFY_RETURN_URL}
+      - VERIFY_EXPIRED_URL=${VERIFY_EXPIRED_URL}
+      - FORGOT_PASSWORD_RETURN_URL=${FORGOT_PASSWORD_RETURN_URL}
+      - API_URL=${API_URL}
+      - DATA_API_URL=${DATA_API_URL}
+      - REDIS_HOST=${REDIS_HOST}
+    networks:
+      - stock_network
+networks:
+  stock_network:
+    external: true
